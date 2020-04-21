@@ -1,5 +1,5 @@
 // var socket = io.connect('http://localhost:5000');
-var socket = io.connect('https://remah-arabi.herokuapp.com');
+var socket = io.connect('https://remah-3rabi.herokuapp.com');
 const personName = document.getElementById('personName').value
 const personImageUrl = document.getElementById('personImageUrl').value
 const personId = document.getElementById('personId').value
