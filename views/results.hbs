@@ -1,0 +1,29 @@
+  <div class="container">
+      {{#if error}}
+          <div class="red-text center"><h3>{{error}}</h3></div>
+    {{/if}}
+    <h2 class="center orange-text">Results of {{exam.name}}</h2>
+    <ul class="collection ">
+{{#each exam.users}}
+ <li class="collection-item avatar">
+        <i class="material-icons circle"> 
+            <img src="{{userId.imageUrl}}" width="40px" height="40px" >
+       </i>
+        <span class="title orange-text">{{userId.name}}</span>
+        <p class="black-text"><strong>{{degree}} degree</strong></p>
+      </li>
+{{/each}}  
+    </ul>
+  </div>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+{{!-- { _id: 5e9e31da71b5395c58208968,
+    userId: 
+     { _id: 5e9cb2107a73f707cda3f48f,
+       name: 'remah',
+       email: 'remah3335@gmail.com',
+       password: '$2a$10$jDmEeN6XijVXx8PhK0KtNekgWhG5iLUYAsSW.VqkiwedbKAAegelW',
+       imageUrl: 'http://res.cloudinary.com/dqfrk92mp/image/upload/v1587327500/mahbtk1qrk5tzndhxi34.png',
+       __v: 0 },
+    degree: 3 } --}}

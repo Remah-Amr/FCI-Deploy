@@ -1,0 +1,18 @@
+<div class="container">
+     {{#if error}}
+          <div class="red-text center"><h3>{{error}}</h3></div>
+    {{/if}}
+  <h1 class="center orange-text">Enter Code Number to Join {{roomName}} Group</h1>
+<form class="col s12" action="/room/add-user" method="POST">
+  <input type="hidden" value="{{roomName}}" name="roomName">
+  <div class="row">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix orange-text">security</i>
+        <input id="password" type="password" class="validate" name="password">
+        <label for="password" class="orange-text">CODE</label>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
