@@ -226,12 +226,22 @@ app.post('/send-image',multerConfigImage,async (req,res) => {
       return res.redirect(`/${req.body.roomName}`)
     }
     const result = await cloud.uploads(req.file.path)
+
+        // create Date object for current location
+        var date = new Date();
+        // convert to milliseconds, add local time zone offset and get UTC time in milliseconds
+        const utcTime = date.getTime() + (date.getTimezoneOffset() * 60000);
+        // create new Date object for a different timezone using supplied its GMT offset.
+        const egyptTime = new Date(utcTime + (3600000 * 2));
+        const Date1 = egyptTime.toLocaleTimeString().replace(/:\d+ /, ' ') + ' ' + egyptTime.toDateString().substr(4)
+
     const newmsg = new message({
       personName: req.body.personName,
       personImageUrl:req.body.personImageUrl,
       message:result.url,
       roomName:req.body.roomName,
-      type : 'image'
+      type : 'image',
+      Date:Date1
     })
     await newmsg.save();
     const newMsg = {
@@ -246,6 +256,7 @@ app.post('/send-image',multerConfigImage,async (req,res) => {
     res.redirect(`/${req.body.roomName}`)
     io.sockets.to(req.body.roomName).emit('send-image',newMsg)
   } catch(err){
+    console.error(err)
     req.flash('error',err)
     res.redirect(`/${req.body.roomName}`)
   }
